@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生命故事繪本創作空間</title>
+    <!-- 引入圓潤親切的 Google 字型 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-bg: #fffbf5; /* 溫暖的奶油底色 */
+            --header-bg: #ffe4c4; /* 柔和的餅乾色/暖桃色 */
+            --text-main: #5c4a45; /* 溫和的咖啡色取代生硬的純黑色 */
+            --card-bg: #ffffff;
+            --accent-green: #e2eed4; /* 清新放鬆的淺綠色 */
+            --accent-pink: #ffe0e0; /* 溫暖的淺粉色 */
+        }
+
+        body {
+            font-family: 'Nunito', 'Noto Sans TC', sans-serif;
+            background-color: var(--primary-bg);
+            background-image: radial-gradient(#fde8d7 2px, transparent 2px); /* 淡淡的可愛圓點背景 */
+            background-size: 30px 30px;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            width: 100%;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(210, 180, 160, 0.2);
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            box-sizing: border-box;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            color: #d35b40; /* 溫暖有活力的橘紅色 */
+            letter-spacing: 1px;
+        }
+
+        header p {
+            margin: 10px 0 0 0;
+            font-size: 1.1rem;
+            color: #7a635c;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1100px;
+            margin: 40px auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            padding-bottom: 40px;
+        }
+
+        .info-section {
+            flex: 1;
+            min-width: 320px;
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: 25px; /* 圓角設計更加友善 */
+            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+            border: 2px dashed #f5d6b4; /* 像筆記本一樣的虛線邊框 */
+            position: relative;
+        }
+
+        .info-section::before {
+            content: '✨';
+            font-size: 2rem;
+            position: absolute;
+            top: -15px;
+            left: -15px;
+        }
+
+        .info-section h2 {
+            color: #d35b40;
+            margin-top: 0;
+            font-size: 1.6rem;
+            border-bottom: 3px solid var(--accent-pink);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .info-section p {
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .tips-list li {
+            background-color: var(--accent-green);
+            margin-bottom: 15px;
+            padding: 15px 20px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            font-size: 1.05rem;
+            transition: transform 0.2s;
+        }
+
+        .tips-list li:hover {
+            transform: translateY(-2px);
+        }
+
+        .tips-list li .emoji {
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+
+        .chatbot-section {
+            flex: 1.2; /* 讓機器人區塊稍微寬一點 */
+            min-width: 320px;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 25px;
+            box-shadow: 0 8px 30px rgba(180, 160, 150, 0.15);
+            display: flex;
+            flex-direction: column;
+            border: 3px solid #fde8d7;
+        }
+
+        /* iframe 機器人的樣式設定 */
+        iframe {
+            width: 100%;
+            height: 550px; /* 稍微加高，讓對話視窗更舒適 */
+            border: none;
+            border-radius: 15px;
+            background-color: #fafafa;
+        }
+
+        /* 簡單的 RWD 調整 */
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8rem; }
+            .info-section, .chatbot-section { padding: 20px; }
+            iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>📖 生命教育繪本小天使</h1>
+        <p>放慢腳步，喝口水，讓我們一起寫下專屬於你的閃亮回憶。</p>
+    </header>
+
+    <div class="container">
+        <!-- 左側：溫馨引導區塊 -->
+        <div class="info-section">
+            <h2>哈囉！歡迎來到這裡 👋</h2>
+            <p>每一段生命經歷，無論平凡或特別，都像是一顆值得被珍藏的寶石。右邊的「<strong>繪本小天使</strong>」已經準備好要聽你的故事囉！</p>
+            
+            <p>在開始之前，小天使想告訴你幾個小秘密：</p>
+            <ul class="tips-list">
+                <li>
+                    <span class="emoji">🌱</span>
+                    <span><strong>深呼吸，放輕鬆：</strong> 這裡沒有考試，也沒有標準答案。寫你想寫的，說你想說的。</span>
+                </li>
+                <li>
+                    <span class="emoji">🎨</span>
+                    <span><strong>發揮創意：</strong> 想到什麼就跟小天使分享，它會幫你把點滴回憶，變成美麗的繪本文字。</span>
+                </li>
+                <li>
+                    <span class="emoji">💖</span>
+                    <span><strong>用心感受：</strong> 創作繪本的過程，也是一趟重新認識自己、擁抱自己的美好旅程。</span>
+                </li>
+            </ul>
+            <p>準備好了嗎？現在就可以在右邊的視窗跟小天使打聲招呼囉！</p>
+        </div>
+
+        <!-- 右側：聊天機器人 iframe 區塊 -->
+        <div class="chatbot-section">
+            <!-- 🌟 請將下方 src="" 裡面的網址，替換成您的「生命教育繪本小天使」機器人連結 🌟 -->
+            <iframe 
+                src="https://您的聊天機器人平台網址.com/bot/12345" 
+                title="生命教育繪本小天使">
+            </iframe>
+        </div>
+    </div>
+
+</body>
+</html>
