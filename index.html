@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生命故事影片創作基地</title>
+    <!-- 引入圓潤親切的 Google 字型 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-bg: #fffbf5; /* 溫暖的奶油底色 */
+            --header-bg: #ffe4c4; /* 柔和的餅乾色 */
+            --text-main: #5c4a45; /* 溫和的咖啡色 */
+            --text-light: #8a736c;
+            --card-bg: #ffffff;
+            --accent-green: #e2eed4; /* 清新放鬆的淺綠色 */
+            --accent-pink: #ffe0e0; /* 溫暖的淺粉色 */
+            --accent-blue: #d4e8f0; /* 柔和的天藍色 */
+            --btn-color: #d35b40; /* 溫暖有活力的橘紅色 */
+            --btn-hover: #c2492f;
+        }
+
+        body {
+            font-family: 'Nunito', 'Noto Sans TC', sans-serif;
+            background-color: var(--primary-bg);
+            background-image: radial-gradient(#fde8d7 2px, transparent 2px);
+            background-size: 30px 30px;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            width: 100%;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(210, 180, 160, 0.2);
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: var(--btn-color);
+            letter-spacing: 2px;
+        }
+
+        header p {
+            margin: 15px 0 0 0;
+            font-size: 1.2rem;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        main {
+            width: 95%;
+            max-width: 1100px;
+            margin: 40px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            padding-bottom: 60px;
+        }
+
+        .welcome-section {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+            border: 3px dashed #f5d6b4;
+            text-align: center;
+            position: relative;
+        }
+
+        .welcome-section::before {
+            content: '🎬';
+            font-size: 2.5rem;
+            position: absolute;
+            top: -20px;
+            left: -15px;
+            transform: rotate(-10deg);
+        }
+
+        .welcome-section h2 {
+            color: var(--btn-color);
+            margin-top: 0;
+            font-size: 1.8rem;
+            border-bottom: 3px solid var(--accent-blue);
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+
+        .welcome-section p {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .step-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 8px 20px rgba(180, 160, 150, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .step-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(180, 160, 150, 0.2);
+        }
+
+        .step-card:nth-child(1) { border-color: var(--accent-pink); background-color: #fffafb; }
+        .step-card:nth-child(2) { border-color: var(--accent-blue); background-color: #f7fcff; }
+        .step-card:nth-child(3) { border-color: var(--accent-green); background-color: #f9fdf5; }
+
+        .step-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .step-card h3 {
+            color: var(--text-main);
+            font-size: 1.4rem;
+            margin: 10px 0;
+        }
+
+        .step-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .gallery-section {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+            border: 3px solid #fde8d7;
+        }
+
+        .gallery-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .gallery-header h2 {
+            color: var(--btn-color);
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        /* 影片預覽假圖樣式 */
+        .video-card {
+            border-radius: 15px;
+            overflow: hidden;
+            background: #fafafa;
+            border: 2px solid #eee;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .video-card:hover {
+            transform: scale(1.02);
+            border-color: var(--header-bg);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 160px;
+            background-color: #e9e3df;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* 播放按鈕圖示 */
+        .play-btn-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .play-btn-icon::after {
+            content: '';
+            display: block;
+            border-style: solid;
+            border-width: 10px 0 10px 16px;
+            border-color: transparent transparent transparent var(--btn-color);
+            margin-left: 5px;
+        }
+
+        .video-thumbnail:nth-child(even) { background-color: var(--accent-blue); }
+        
+        .video-info {
+            padding: 15px;
+        }
+
+        .video-info h4 {
+            margin: 0 0 8px 0;
+            font-size: 1.1rem;
+            color: var(--text-main);
+        }
+
+        .video-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .action-button {
+            display: inline-block;
+            background-color: var(--btn-color);
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            box-shadow: 0 6px 15px rgba(211, 91, 64, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .action-button:hover {
+            background-color: var(--btn-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(211, 91, 64, 0.4);
+        }
+
+        .cta-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8rem; }
+            .welcome-section, .gallery-section { padding: 25px; }
+            .step-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🎥 生命故事影片創作基地</h1>
+        <p>用影像記錄感動，讓你的聲音成為最耀眼的星光。</p>
+    </header>
+
+    <main>
+        <!-- 引導與歡迎區塊 -->
+        <section class="welcome-section">
+            <h2>哈囉！準備好當自己人生的導演了嗎？</h2>
+            <p>每個人都是一本獨一無二的書，而現在，我們要將這本書變成生動的電影！<br>
+               這是一個讓你暢所欲言、用鏡頭捕捉真實自我的溫暖小天地。不論是開心的、感動的，還是那些曾讓你充滿挑戰的深刻時刻，都值得被大聲說出來、記錄下來。</p>
+            <p><strong>別擔心拍得好不好，因為「真實的你」就是最棒的畫面。</strong></p>
+        </section>
+
+        <!-- 單一連結入口（導向繪本小天使） -->
+        <section style="text-align: center; padding: 60px 20px; background: var(--card-bg); border-radius: 30px; box-shadow: 0 8px 25px rgba(0,0,0,0.04); border: 2px solid var(--accent-pink);">
+            <p style="font-size: 1.3rem; color: var(--text-main); margin-bottom: 30px; line-height: 1.8; font-weight: bold;">
+                萬事起頭難？別擔心！<br>
+                在開始錄製影片之前，讓我們先透過對話，把腦海中的回憶變成動人的繪本故事吧 ✨
+            </p>
+            <a href="https://alankudotscu.github.io/1142dChatbot1/code_artifact.html" class="action-button" style="font-size: 1.4rem; padding: 20px 40px; display: inline-flex; align-items: center; justify-content: center; gap: 15px; text-decoration: none;">
+                <span style="font-size: 2rem;">👼</span> 呼叫「生命教育繪本小天使」
+            </a>
+            <p style="color: var(--text-light); margin-top: 25px; font-size: 1rem;">點擊按鈕，開始你的第一步！</p>
+        </section>
+
+    </main>
+
+</body>
+</html>
